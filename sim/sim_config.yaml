@@ -1,0 +1,27 @@
+# Number of threads to run on and available RAM (MB) for execution (value), per target
+# machine (key). Unless you have a good reason to do otherwise, make sure the
+# threads correspond to the number of physical cores that are available. The
+# machine name is purely descriptive, and doesn't have to correspond to an
+# actual host name. If a workload has to be split into multiple time slots for
+# a machine, simply create multiple entries for it using an underscore after
+# the machine name (e.g. evaws1_a, evaws1_b, evaws1_c)
+RESOURCES:
+  'hydra': [4, 64000]
+  'artemis': [4, 16000]
+
+# Give ranges for each parameter to be passed to the simulations, or a
+# single value to use as constant.
+# NOTE: ALL simulation parameters must be defined here, even if overwritten
+# by the dispatcher.
+# NOTE: Everything under PARAMS must be iterable (a list). For constants, the list can simply contain a single item.
+PARAMS:
+  'sim_length': [100000000] # In time steps
+  'nr_sites': [2, 4]
+  'days_at_loc': ["1,6", "2,12"] # Min/max as tuples. These will, of course, have to be converted to actual tuples
+  'diag': [True] # Waste perc. assoc. w/ gtk -> mtk transfers
+
+# Other parameters needed by the scheduler:
+SCHEDULER:
+  'runs_per_cfg': 10 # Number of replicates (simulation runs) per parameter configuration
+  'baseline_cpu': "i7 2675QM"  # Baseline performance
+  'baseline_perf': 20000 # Estimated time-steps at baseline for baseline configuration

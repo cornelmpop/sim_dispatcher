@@ -1,0 +1,10 @@
+# This is for the default 'hello world' sim (which, of course, is not really a sim). For more details, see
+# sim/sim_config.yaml
+
+# Expect 4 unique parameter combinations [see PARAMS] * 10 runs per combination ('runs_per_cfg' under SCHEDULER)
+exp_nrcomb: 4
+exp_nrjobs: 40
+# Expect 2 machines (see RESOURCES)
+exp_nrmachines: 2
+exp_threads: 8 # 4 per each machine in the default config.
+exp_sim_out_l: 10 # Number of 'data' entries in sim output
